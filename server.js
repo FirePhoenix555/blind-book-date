@@ -18,3 +18,18 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
+const database = firebase.database();
+const books = database.ref("books");
+let keys = [];
+
+books.on("value", data => {
+    keys = [];
+    let data2 = data.val();
+    if (!data2) return;
+    let dkeys = Object.keys(data2);
+    for (let i = 0; i < dkeys.length; i++) {
+        let key = dkeys[i];
+        keys.push(key);
+    }
+});
