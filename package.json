@@ -1,0 +1,30 @@
+{
+  "name": "blind-book-date",
+  "version": "1.0.0",
+  "description": "A website to enable users to share and read books without judging them by their covers!",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase": "^6.6.1",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FirePhoenix555/blind-book-date.git"
+  },
+  "keywords": [
+    "book",
+    "date"
+  ],
+  "author": "Fire",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FirePhoenix555/blind-book-date/issues"
+  },
+  "homepage": "https://github.com/FirePhoenix555/blind-book-date#readme"
+}
