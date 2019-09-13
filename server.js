@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+const express = require("express");
+const socket = require("socket.io");
 const app = express();
 const server = app.listen(process.env.PORT || 3000);
 const io = socket(server);
@@ -35,3 +37,5 @@ books.on("value", data => {
         keys.push(key);
     }
 });
+
+console.log("Running...");
