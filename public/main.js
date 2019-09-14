@@ -111,7 +111,7 @@ function makeArr(options) {
 	for (let i = 0; i < options.length; i++) {
 		let a = {};
 		a["book-genre"] = options[i].genre;
-		a["book-description"] = substringIze(options[i].description);
+		a["book-description"] = substringIze(options[i].description, 50);
 		a["desc"] = options[i].description;
 
 		arr.push(a);
