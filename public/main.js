@@ -5,15 +5,17 @@ let waiting = true;
 
 let ct = 0;
 
-/*
-get a list of books
-*/
+const GENRES = ["ALL"];
 
 socket.on("books", data => {
 	if (ct != 0) return;
 	lob = data;
 	waiting = false;
 	ct++;
+
+	for (let i = 0; i < data.length; i++) {
+		if (!GENRES.includes(data[i].genre)) GENRES.push(data[i].genre);
+	}
 })
 
 // https://davidwalsh.name/query-string-javascript
@@ -80,20 +82,30 @@ function searchByGenre(genre) {
 	}
 
 	let options = [];
+	let all = {
+		ALL: []
+	};
 	for (let i = 0; i < lob.length; i++) {
 		if (lob[i].genre == genre || genre == "ALL") {
 			options.push(lob[i]);
 		}
+		if (all[lob[i].genre]) all[lob[i].genre].push(lob[i]);
+		else all[lob[i].genre] = [lob[i]];
+
+		all.ALL.push(lob[i]);
 	}
 
 	document.getElementById("search-type").textContent = genre;
 
+	for (let i = 0; i < GENRES.length; i++) {
+		if (document.getElementById(GENRES[i] + "b")) {
+			document.getElementById(GENRES[i] + "b").textContent = all[GENRES[i]].length;
+		}
+	}
+
 	// description.substring(0, 20) + "...";
 	let arr = makeArr(options);
 	makeTable(document.getElementById("books"), arr);
-
-	// put them onto the webpage
-	console.log(options);
 }
 
 function substringIze(desc, len) {
