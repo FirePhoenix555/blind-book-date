@@ -207,7 +207,7 @@ function submit() {
 
 	obj["in-classroom"] = document.getElementById("classroom").checked;
 
-	obj.description = document.getElementById("book-description").value;
+	obj.description = document.getElementById("book-description").value.substring(0, 5000);
 	if (obj.description == "") alert("You need a description!");
 
 	obj.title = document.getElementById("title").value;
