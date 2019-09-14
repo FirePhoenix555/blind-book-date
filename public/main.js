@@ -205,7 +205,7 @@ function submit() {
 	obj.genre = genre;
 
 	obj.pages = document.getElementById("pages").value;
-	if (obj.pages == "") {
+	if (obj.pages == "" || obj.pages > 9999999999 || obj.pages <= 0) {
 		alert("You need a page count!");
 		success = false;
 	}
