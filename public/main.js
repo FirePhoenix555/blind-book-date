@@ -112,11 +112,18 @@ function makeArr(options) {
 		let a = {};
 		a["book-genre"] = options[i].genre;
 		a["book-description"] = substringIze(options[i].description);
+		a["desc"] = options[i].description;
 
 		arr.push(a);
 	}
 
 	return arr;
+}
+
+function findBookByGD(genre, description) {
+	for (let i = 0; i < lob.length; i++) {
+		if (lob[i].genre == genre && lob[i].description == description) return lob[i];
+	}
 }
 
 function makeTable(elt, arr) {
@@ -145,10 +152,11 @@ function makeTable(elt, arr) {
 	for (let i = 1; i < arr.length; i++) {
 		let tr = document.createElement("tr");
 		tr.setAttribute("class", "book");
-		tr.setAttribute("onclick", "goToBook(" + (lob.indexOf(arr[i]) - 1) + ")");
+		tr.setAttribute("onclick", "goToBook(" + lob.indexOf(findBookByGD(arr[i]["book-genre"], arr[i]["desc"])) + ")");
 
 		let ok = Object.keys(arr[i]);
 		for (let j = 0; j < ok.length; j++) {
+			if (ok[j] == "desc") continue;
 			let td = document.createElement("td");
 			let span = document.createElement("span");
 			span.setAttribute("class", ok[j]);
