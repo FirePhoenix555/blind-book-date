@@ -49,16 +49,19 @@ io.sockets.on("connection", socket => {
 			waiting = false;
 		})
 
-		while (waiting) {}
-		if (tor) return;
+		if (!tor) addBook(data, socket);
 
-		OLD_SOCKETS.push(socket.id);
-
-		console.log("New book! " + data.title)
-		bks.push(data);
-		books.set(bks);
+		
 	})
 });
+
+function addBook(data, socket) {
+	OLD_SOCKETS.push(socket.id);
+
+	console.log("New book! " + data.title)
+	bks.push(data);
+	books.set(bks);
+}
 
 const firebaseConfig = {
     apiKey: process.env.API_KEY,
