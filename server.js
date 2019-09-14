@@ -21,6 +21,8 @@ io.sockets.on("connection", socket => {
 	}
 
 	socket.on("new-book", data => {
+		if (bks.includes(data)) return;
+
 		console.log("New book! " + data.title)
 		bks.push(data);
 		books.set(bks);
