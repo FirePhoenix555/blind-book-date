@@ -1,5 +1,4 @@
 /* TODO
-clean up intents
 add actual data submission
 add titles
 */
