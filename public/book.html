@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="utf-8">
+
+    <style>
+        #book-description {
+  border: 1px solid black;
+  min-height: 50vh;
+}
+
+#book-genre {
+  border: 1px solid black;
+  max-width: 25vw;
+}
+
+#read-book {
+  position: absolute;
+  bottom: 5px;
+  
+  width: 99vw;
+  min-height: 50px;
+  
+  margin: 0;
+  padding: 0;
+}
+
+#admin {
+  border: 1px solid black;
+  position: absolute;
+  top: -20px;
+  left: 26vw;
+  
+  width: 24vw;
+  min-height: 50px;
+}
+
+.admin {
+  margin-top: 10px;
+}
+    </style>
+
+    <script>
+        function checkRead() {
+            if (document.getElementById("agree").checked) {
+                location.href = "/read-book";
+            }
+        }
+    </script>
+
+  </head>
+  <body>
+    
+    <div id="header">
+      <span class="tab" id="blocker">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="tab" onclick="location.href='/find-book'">Find Books</span>
+      <span class="tab" onclick="location.href='/add-book'">Add Book</span>
+    </div>
+    
+    <div class="main-container" id="main">
+      <p id="book-genre">Genre</p>
+      <div id="admin">
+        <button class="admin" id="see-all-info">See all info</button>
+        <button class="admin" id="delete-book">Delete</button>
+      </div>
+      <p id="book-description">Description</p>
+      <label><input type="checkbox" id="agree"> I AGREE TO COMMIT TO TRYING TO READ THIS BOOK</label>
+      <!-- elt.checked -->
+    </div>
+    
+    <div class="main-container" id="side">
+      <p><strong>Other Stats</strong></p>
+      <p>Pages: <span id="pages">A</span> <br>
+        In a series: <span id="series">Yes</span>
+      </p>
+    </div>
+    
+    <button id="read-book" onclick="checkRead()">READ BOOK</button>
+  </body>
+</html>

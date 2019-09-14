@@ -1,3 +1,8 @@
+/* TODO
+clean up intents
+add actual data submission
+*/
+
 require("dotenv").config();
 
 const express = require("express");
@@ -7,6 +12,12 @@ const server = app.listen(process.env.PORT || 3000);
 const io = socket(server);
 const firebase = require("firebase");
 app.use(express.static("public"));
+
+app.use("/find-book", express.static("public/finding.html"));
+app.use("/add-book", express.static("public/adding.html"));
+app.use("/book", express.static("public/book.html"));
+app.use("/read-book", express.static("public/reading.html"));
+
 io.sockets.on("connection", socket => {
     
 });

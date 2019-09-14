@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="utf-8">
+
+    <style>
+        .cg-container p {
+    text-align: center;
+  }
+  
+  .cg-container {
+    position: relative;
+    top: 30px;
+  }
+  
+  #ta-container {
+    width: 50vw;
+    position: relative;
+    left: 35vw;
+  }
+  
+  #ta-container p {
+    text-align: initial;
+    padding-left: 5px;
+  }
+  
+  #coverImg {
+    max-width: 25vw;
+    height: 50vh;
+    position: relative;
+    top: -50px;
+    left: 12vw;
+  }
+    </style>
+
+  </head>
+  <body>
+    
+    <div id="header">
+      <span class="tab" id="blocker">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="tab" onclick="location.href='/find-book'">Find Books</span>
+      <span class="tab" onclick="location.href='/add-book'">Add Book</span>
+    </div>
+    
+    <div class="cg-container">
+      <p><strong>CONGRATULATIONS!</strong></p>
+      <p>You've found a new book!</p>
+      <div id="ta-container">
+        <p>Title: <span id="title">A</span> <br>
+          Author: <span id="author">B</span>
+        </p>
+      </div>
+      <img src="https://images-na.ssl-images-amazon.com/images/I/51fRar1PvAL._SX300_BO1,204,203,200_.jpg" id="coverImg">
+    </div>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="utf-8">
+
+    <script>
+        function goToBook(num) {
+            location.href = "/book";
+        }
+
+        function searchByGenre(genre) {
+            // do that
+        }
+    </script>
+  </head>
+  <body>
+    
+    <div id="header">
+      <span class="tab" id="blocker">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="tab" id="selected-tab">Find Books</span>
+      <span class="tab" onclick="location.href='/add-book'">Add Book</span>
+    </div>
+    
+    <div class="main-container" id="main">
+      <div>Searching by: <span id="search-type">ALL</span></div>
+      <div id="books">
+        <table>
+          <tr>
+            <th>Genre</th>
+            <th>Description</th>
+          </tr>
+          <tr class="book" onclick="goToBook()">
+            <td><span class="book-genre">A</span></td>
+            <td><span class="book-description">A wonderful thing</span></td>
+          </tr>
+          <tr class="book" onclick="goToBook()">
+            <td><span class="book-genre">A</span></td>
+            <td><span class="book-description">A wonderful thing</span></td>
+          </tr>
+          <tr class="book" onclick="goToBook()">
+            <td><span class="book-genre">A</span></td>
+            <td><span class="book-description">A wonderful thing</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    <div class="main-container" id="side">
+      <p class="sticky" style="text-align: center;"><strong>GENRES</strong></p>
+      <div class="genre" onclick="searchByGenre()">ABC</div>
+      <div class="genre" onclick="searchByGenre()">ABC</div>
+      <div class="genre" onclick="searchByGenre()">ABC</div>
+    </div>
+    
+  </body>
+</html>

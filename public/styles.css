@@ -1,0 +1,118 @@
+html, body {
+    /* margin: 0;
+    padding: 0; */
+  }
+  
+  #header {
+    position: sticky;
+  }
+  
+  .tab {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    
+    background-color: white;
+    
+    position: relative;
+    top: 15px;
+  }
+
+  .tab:hover {
+      cursor: pointer;
+  }
+  
+  #selected-tab {
+    background-color: lightgray;
+  }
+  
+  #blocker {
+    background-color: gray;
+  }
+  
+  .main-container {
+    position: relative;
+    top: 30px;
+    width: 50vw;
+  }
+  
+  .sticky {
+    position: sticky;
+    top: 0px;
+    background-color: white;
+  }
+  
+  
+  /* CHANGED */
+  
+  #side {
+    position: absolute;
+    left: 51vw;
+    /* CHANGED */
+    top: 50px;
+    /* /CHANGED */
+    width: 48vw;
+    border: 1px solid black;
+    
+    overflow-y: scroll;
+    
+    /* CHANGED */
+    height: 70vh;
+    /* /CHANGED */
+    
+    text-align: center;
+  }
+
+  .book:hover {
+      cursor: pointer;
+  }
+  
+  
+  
+  #top-tab {
+    border: 1px solid black;
+    max-width: 49vw;
+  }
+  
+  #book-description {
+    border: 1px solid black;
+    height: 50vh;
+    width: 49vw;
+    margin-top: 5px;
+    resize: none;
+    
+    font-family: serif;
+  }
+  
+  #submit {
+    position: absolute;
+    bottom: 5px;
+    
+    width: 100vw;
+    min-height: 50px;
+    
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  #top-tab p {
+    margin: 5px;
+  }
+  
+  #side p {
+    margin: 5px;
+    text-align: initial;
+  }
+  
+  #new-genre {
+    margin-top: 3px;
+    width: 10vw;
+    height: 13px;
+  }
+  
+  #note {
+    border: 1px solid black;
+    background-color: lightgray;
+    margin: 5px;
+  }
