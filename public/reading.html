@@ -36,6 +36,13 @@
 				left: 12vw;
 			}
 		</style>
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/main.js"></script>
+
+		<script>
+			window.onload = getRSpecifics();
+		</script>
 	</head>
 	<body>
 		<div id="header">
@@ -48,11 +55,11 @@
 			<h2><strong>CONGRATULATIONS!</strong></h2>
 			<p>You've found a new book!</p>
 			<div id="ta-container">
-			<p>Title: <span id="title">A</span> <br>
-				Author: <span id="author">B</span>
-			</p>
+				<p>Title: <span id="title"></span> <br>
+					Author: <span id="author"></span>
+				</p>
 			</div>
-			<img src="https://images-na.ssl-images-amazon.com/images/I/51fRar1PvAL._SX300_BO1,204,203,200_.jpg" id="coverImg">
+			<img id="coverImg">
 		</div>
 	</body>
 </html>

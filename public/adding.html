@@ -54,11 +54,8 @@
 			}
 		</style>
 
-		<script>
-			function submit() {
-				location.href = "/find-book";
-			}
-		</script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/main.js"></script>
 
 	</head>
   	<body>
@@ -71,24 +68,29 @@
 		<div class="main-container" id="main">
 			<div id="top-tab">
 				<p>Primary genre:
-				<select>
-					<option value=""></option>
-					<option value="A">A</option>
-					<option value="B">B</option>
-					<option value="C">C</option>
-					<option value="D">D</option>
-					<option value="new">Other</option>
-				</select>
-				
-				<input type="text" id="new-genre">
+					<select id="genre-select">
+						<option value=""></option>
+						<option value="Romance">Romance</option>
+						<option value="Science Fiction">Science Fiction</option>
+						<option value="Fantasy">Fantasy</option>
+						<option value="YA (Young Adult)">YA (Young Adult)</option>
+						<option value="Horror">Horror</option>
+						<option value="Mystery">Mystery</option>
+						<option value="Non-fiction">Non-fiction</option>
+						<option value="Historical Fiction">Historical Fiction</option>
+						<option value="Literary Fiction">Literary Fiction</option>
+						<option value="new">Other</option>
+					</select>
+					
+					<input type="text" id="new-genre">
 				</p>
 				
 				<p>
-				Pages: <input type="number" id="pages">
+					Pages: <input type="number" id="pages">
 				</p>
 				
 				<p>
-				In a series? <input type="checkbox" id="series">
+					In a series? <input type="checkbox" id="series">
 				</p>
 			</div>
 			

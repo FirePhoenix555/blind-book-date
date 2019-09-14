@@ -14,7 +14,7 @@
 			}
 
 			#book-genre {
-				border: 1px solid black;
+				/* border: 1px solid black; */
 				max-width: 25vw;
 			}
 
@@ -44,12 +44,11 @@
 			}
 		</style>
 
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/main.js"></script>
+
 		<script>
-			function checkRead() {
-				if (document.getElementById("agree").checked) {
-					location.href = "/read-book";
-				}
-			}
+			window.onload = getSpecifics();
 		</script>
 
 	</head>
@@ -63,10 +62,10 @@
 		
 		<div class="main-container" id="main">
 			<p id="book-genre">Genre</p>
-			<div id="admin">
+			<!-- <div id="admin">
 				<button class="admin" id="see-all-info">See all info</button>
 				<button class="admin" id="delete-book">Delete</button>
-			</div>
+			</div> -->
 			<p id="book-description">Description</p>
 			<label><input type="checkbox" id="agree"> I AGREE TO COMMIT TO TRYING TO READ THIS BOOK</label>
 		</div>

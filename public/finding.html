@@ -13,13 +13,12 @@
 			}
 		</style>
 
-		<script>
-			function goToBook(num) {
-				location.href = "/book";
-			}
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/main.js"></script>
 
-			function searchByGenre(genre) {
-				// do that
+		<script>
+			window.onload = () => {
+				searchByGenre("ALL");
 			}
 		</script>
 	</head>
@@ -39,27 +38,22 @@
 						<th>Genre</th>
 						<th>Description</th>
 					</tr>
-					<tr class="book" onclick="goToBook()">
-						<td><span class="book-genre">A</span></td>
-						<td><span class="book-description">A wonderful thing</span></td>
-					</tr>
-					<tr class="book" onclick="goToBook()">
-						<td><span class="book-genre">A</span></td>
-						<td><span class="book-description">A wonderful thing</span></td>
-					</tr>
-					<tr class="book" onclick="goToBook()">
-						<td><span class="book-genre">A</span></td>
-						<td><span class="book-description">A wonderful thing</span></td>
-					</tr>
 				</table>
 			</div>
 		</div>
 		
 		<div class="main-container" id="side">
 			<p class="sticky" style="text-align: center;"><strong>GENRES</strong></p>
-			<div class="genre" onclick="searchByGenre()">ABC</div>
-			<div class="genre" onclick="searchByGenre()">ABC</div>
-			<div class="genre" onclick="searchByGenre()">ABC</div>
+			<div class="genre" onclick="searchByGenre('Romance')">Romance</div>
+			<div class="genre" onclick="searchByGenre('Science Fiction')">Science Fiction</div>
+			<div class="genre" onclick="searchByGenre('Fantasy')">Fantasy</div>
+			<div class="genre" onclick="searchByGenre('YA (Young Adult)')">YA (Young Adult)</div>
+			<div class="genre" onclick="searchByGenre('Horror')">Horror</div>
+			<div class="genre" onclick="searchByGenre('Mystery')">Mystery</div>
+			<div class="genre" onclick="searchByGenre('Non-fiction')">Non-fiction</div>
+			<div class="genre" onclick="searchByGenre('Historical Fiction')">Historical Fiction</div>
+			<div class="genre" onclick="searchByGenre('Literary Fiction')">Literary Fiction</div>
+			<div class="genre" onclick="searchByGenre('ALL')">ALL</div>
 		</div>
 	</body>
 </html>
