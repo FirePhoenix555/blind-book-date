@@ -197,7 +197,7 @@ function submit() {
 	let success = true;
 
 	let genre = document.getElementById("genre-select").value;
-	if (genre == "new") genre = document.getElementById("new-genre").value;
+	if (genre == "new") genre = document.getElementById("new-genre").value.substring(0, 300);
 	if (genre == "") {
 		alert("You need a genre!");
 		success = false;
@@ -220,13 +220,13 @@ function submit() {
 		success = false;
 	}
 
-	obj.title = document.getElementById("title").value;
+	obj.title = document.getElementById("title").value.substring(0, 300);
 	if (obj.title == "") {
 		alert("You need a title!");
 		success = false;
 	}
 
-	obj.author = document.getElementById("author").value;
+	obj.author = document.getElementById("author").value.substring(0, 300);
 	if (obj.author == "") {
 		alert("You need an author!");
 		succes = false;
@@ -236,6 +236,16 @@ function submit() {
 	if (obj["cover-img"] == "") {
 		alert("You need a cover image!");
 		success = false;
+	} else {
+		var http = new XMLHttpRequest();
+
+		http.open('HEAD', obj["cover-img"], false);
+		http.send();
+
+		if (http.status == 404) {
+			alert("You need a cover image!");
+			success = false;
+		}
 	}
 
 	if (success) {
