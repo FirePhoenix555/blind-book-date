@@ -194,31 +194,52 @@ function makeTable(elt, arr) {
 // /add-book
 function submit() {
 	let obj = {};
+	let success = true;
 
 	let genre = document.getElementById("genre-select").value;
 	if (genre == "new") genre = document.getElementById("new-genre").value;
-	if (genre == "") alert("You need a genre!");
+	if (genre == "") {
+		alert("You need a genre!");
+		success = false;
+	}
 	obj.genre = genre;
 
 	obj.pages = document.getElementById("pages").value;
-	if (obj.pages == "") alert("You need a page count!");
+	if (obj.pages == "") {
+		alert("You need a page count!");
+		success = false;
+	}
 
 	obj.series = document.getElementById("series").checked;
 
 	obj["in-classroom"] = document.getElementById("classroom").checked;
 
 	obj.description = document.getElementById("book-description").value.substring(0, 5000);
-	if (obj.description == "") alert("You need a description!");
+	if (obj.description == "") {
+		alert("You need a description!");
+		success = false;
+	}
 
 	obj.title = document.getElementById("title").value;
-	if (obj.title == "") alert("You need a title!");
+	if (obj.title == "") {
+		alert("You need a title!");
+		success = false;
+	}
 
 	obj.author = document.getElementById("author").value;
-	if (obj.author == "") alert("You need an author!");
+	if (obj.author == "") {
+		alert("You need an author!");
+		succes = false;
+	}
 
 	obj["cover-img"] = document.getElementById("cvr-img").value;
-	if (obj["cover-img"] == "") alert("You need a cover image!");
+	if (obj["cover-img"] == "") {
+		alert("You need a cover image!");
+		success = false;
+	}
 
-	socket.emit("new-book", obj);
-	location.href = "/find-book";
+	if (success) {
+		socket.emit("new-book", obj);
+		location.href = "/find-book";
+	}
 }
