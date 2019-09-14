@@ -1,6 +1,5 @@
 /* TODO
 add actual data submission
-add titles
 */
 
 require("dotenv").config();
