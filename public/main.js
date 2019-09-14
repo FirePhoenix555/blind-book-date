@@ -145,7 +145,7 @@ function makeTable(elt, arr) {
 	for (let i = 1; i < arr.length; i++) {
 		let tr = document.createElement("tr");
 		tr.setAttribute("class", "book");
-		tr.setAttribute("onclick", "goToBook(" + (log.indexOf(arr[i]) - 1) + ")");
+		tr.setAttribute("onclick", "goToBook(" + (lob.indexOf(arr[i]) - 1) + ")");
 
 		let ok = Object.keys(arr[i]);
 		for (let j = 0; j < ok.length; j++) {
