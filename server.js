@@ -38,20 +38,12 @@ io.sockets.on("connection", socket => {
 			return;
 		}
 
-		let tor;
-		let waiting = true;
-
 		socket.emit("reqCookie", "user-login");
 		socket.on("cookie", data => {
-			if (data) {
-				tor = true;
+			if (!data) {
+				addBook(data, socket);
 			}
-			waiting = false;
 		})
-
-		if (!tor) addBook(data, socket);
-
-		
 	})
 });
 
