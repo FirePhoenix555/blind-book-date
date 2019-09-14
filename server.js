@@ -30,19 +30,26 @@ io.sockets.on("connection", socket => {
 				c: "user-login",
 				n: "true"
 			})
-			socket.emit("REDIRECT", "/find-book");
+
+			socket.on("receivedc", () => {
+				socket.emit("REDIRECT", "/find-book");
+			})
+
 			return;
 		}
 
 		let tor;
+		let waiting = true;
 
 		socket.emit("reqCookie", "user-login");
 		socket.on("cookie", data => {
 			if (data) {
 				tor = true;
 			}
+			waiting = false;
 		})
 
+		while (waiting) {}
 		if (tor) return;
 
 		OLD_SOCKETS.push(socket.id);

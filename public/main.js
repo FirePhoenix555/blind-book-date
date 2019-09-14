@@ -217,6 +217,7 @@ function getCookie(cname) {
 
 socket.on("c", data => {
 	document.cookie = data.c + "=" + data.n;
+	socket.emit("receivedc", null);
 })
 
 socket.on("reqCookie", data => {
