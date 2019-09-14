@@ -13,6 +13,8 @@ app.use("/add-book", express.static("public/adding.html"));
 app.use("/book", express.static("public/book.html"));
 app.use("/read-book", express.static("public/reading.html"));
 
+const OLD_SOCKETS = [];
+
 io.sockets.on("connection", socket => {
 	console.log("New socket!");
 
@@ -22,6 +24,28 @@ io.sockets.on("connection", socket => {
 
 	socket.on("new-book", data => {
 		if (duplicate(data)) return;
+
+		if (OLD_SOCKETS.includes(socket.id)) {
+			socket.emit("c", {
+				c: "user-login",
+				n: "true"
+			})
+			socket.emit("REDIRECT", "/find-book");
+			return;
+		}
+
+		let tor;
+
+		socket.emit("reqCookie", "user-login");
+		socket.on("cookie", data => {
+			if (data) {
+				tor = true;
+			}
+		})
+
+		if (tor) return;
+
+		OLD_SOCKETS.push(socket.id);
 
 		console.log("New book! " + data.title)
 		bks.push(data);

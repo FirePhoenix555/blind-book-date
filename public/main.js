@@ -18,6 +18,14 @@ socket.on("books", data => {
 	}
 })
 
+socket.on("REDIRECT", data => {
+	location.href = data;
+});
+
+socket.on("ALERT", data => {
+	alert(data);
+});
+
 // https://davidwalsh.name/query-string-javascript
 function getUrlParameter(name) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -190,6 +198,30 @@ function makeTable(elt, arr) {
 
 	elt.appendChild(table);
 }
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+socket.on("c", data => {
+	document.cookie = data.c + "=" + data.n;
+})
+
+socket.on("reqCookie", data => {
+	socket.emit("cookie", (getCookie(data) != ""));
+})
 
 // /add-book
 function submit() {
