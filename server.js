@@ -1,7 +1,3 @@
-/* TODO
-add in the classroom
-*/
-
 require("dotenv").config();
 
 const express = require("express");

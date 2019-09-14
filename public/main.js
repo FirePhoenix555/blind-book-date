@@ -40,10 +40,14 @@ function getSpecifics() {
 
 	let b = lob[getUrlParameter("num")];
 
+	let desc = b.description;
+	desc = desc.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
+
 	document.getElementById("book-genre").textContent = b.genre;
-	document.getElementById("book-description").textContent = b.description;
+	document.getElementById("book-description").innerHTML = desc;
 	document.getElementById("pages").textContent = b.pages;
 	document.getElementById("series").textContent = ((b.series) ? "Yes" : "No");
+	document.getElementById("classroom").textContent = ((b["in-classroom"]) ? "Yes" : "No");
 }
 
 // /read-book
@@ -188,6 +192,8 @@ function submit() {
 	if (obj.pages == "") alert("You need a page count!");
 
 	obj.series = document.getElementById("series").checked;
+
+	obj["in-classroom"] = document.getElementById("classroom").checked;
 
 	obj.description = document.getElementById("book-description").value;
 	if (obj.description == "") alert("You need a description!");
