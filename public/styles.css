@@ -21,6 +21,10 @@
 	background-color: lightgray;
 }
 
+#selected-tab:hover {
+	cursor: default;
+}
+
 #blocker {
 	background-color: gray;
 }
