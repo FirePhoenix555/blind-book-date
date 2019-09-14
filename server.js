@@ -21,7 +21,7 @@ io.sockets.on("connection", socket => {
 	}
 
 	socket.on("new-book", data => {
-		if (bks.includes(data)) return;
+		if (duplicate(data)) return;
 
 		console.log("New book! " + data.title)
 		bks.push(data);
@@ -63,6 +63,21 @@ books.on("value", data => {
 	received = true;
 	io.sockets.emit("books", bks);
 });
+
+function duplicate(data) {
+	for (let i = 0; i < bks.length; i++) {
+		if (bks[i].author == data.author &&
+			bks[i]["cover-img"] == data["cover-img"] &&
+			bks[i].description == data.description &&
+			bks[i].genre == data.genre &&
+			bks[i]["in-classroom"] == data["in-classroom"] &&
+			bks[i].pages == data.pages &&
+			bks[i].series == data.series &&
+			bks[i].title == data.title)
+				return true;
+	}
+	return false;
+}
 
 // books.child("0").set({
 // 	title: "The Giver",
