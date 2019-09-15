@@ -53,10 +53,10 @@ function getSpecifics() {
 	let desc = b.description;
 	desc = desc.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
 
-	document.getElementById("book-genre").textContent = b.genre;
+	// document.getElementById("book-genre").textContent = b.genre;
 	document.getElementById("book-description").innerHTML = desc;
-	document.getElementById("pages").textContent = b.pages;
-	document.getElementById("series").textContent = ((b.series) ? "Yes" : "No");
+	// document.getElementById("pages").textContent = b.pages;
+	// document.getElementById("series").textContent = ((b.series) ? "Yes" : "No");
 	document.getElementById("classroom").textContent = ((b["in-classroom"]) ? "Yes" : "No");
 }
 
@@ -82,6 +82,8 @@ function goToBook(num) {
 }
 
 function searchByGenre(genre) {
+	genre = "ALL";
+
 	if (waiting) {
 		setTimeout(() => {
 			searchByGenre(genre);
@@ -94,11 +96,11 @@ function searchByGenre(genre) {
 		ALL: []
 	};
 	for (let i = 0; i < lob.length; i++) {
-		if (lob[i].genre == genre || genre == "ALL") {
+		// if (lob[i].genre == genre || genre == "ALL") {
 			options.push(lob[i]);
-		}
-		if (all[lob[i].genre]) all[lob[i].genre].push(lob[i]);
-		else all[lob[i].genre] = [lob[i]];
+		// }
+		// if (all[lob[i].genre]) all[lob[i].genre].push(lob[i]);
+		// else all[lob[i].genre] = [lob[i]];
 
 		all.ALL.push(lob[i]);
 	}
@@ -107,7 +109,7 @@ function searchByGenre(genre) {
 
 	for (let i = 0; i < GENRES.length; i++) {
 		if (document.getElementById(GENRES[i] + "b")) {
-			document.getElementById(GENRES[i] + "b").textContent = all[GENRES[i]].length;
+			// document.getElementById(GENRES[i] + "b").textContent = all[GENRES[i]].length;
 		}
 	}
 
@@ -185,6 +187,7 @@ function makeTable(elt, arr) {
 			let span = document.createElement("span");
 			span.setAttribute("class", ok[j]);
 			span.textContent = arr[i][ok[j]];
+			if (ok[j] == "book-genre") span.textContent = "temporarily disabled";
 			td.appendChild(span);
 			tr.appendChild(td);
 		}
