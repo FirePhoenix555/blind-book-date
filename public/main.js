@@ -209,10 +209,10 @@ function getCookie(cname) {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
+            return !(c.substring(name.length, c.length) == "false");
         }
     }
-    return "";
+    return true;
 }
 
 socket.on("c", data => {
@@ -221,7 +221,18 @@ socket.on("c", data => {
 })
 
 socket.on("reqCookie", data => {
-	socket.emit("cookie", (getCookie(data) != ""));
+	socket.emit("cookie", getCookie(data));
+})
+
+socket.on("clrc", () => {
+	var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 })
 
 // /add-book

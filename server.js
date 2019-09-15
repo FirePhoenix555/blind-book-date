@@ -14,9 +14,33 @@ app.use("/book", express.static("public/book.html"));
 app.use("/read-book", express.static("public/reading.html"));
 
 const OLD_SOCKETS = [];
+const COOKIES = [];
+const WBID = {};
+
+let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+for (let i = 0; i < 15; i++) {
+	let str = "";
+	for (let j = 0; j < 10; j++) {
+		str += chars.charAt(Math.floor(Math.random() * chars.length));
+	}
+	COOKIES.push(str);
+}
+
+let ri = Math.floor(Math.random() * COOKIES.length);
 
 io.sockets.on("connection", socket => {
 	console.log("New socket!");
+
+	WBID[socket.id] = false;
+
+	let ti = ["true", "false"];
+	socket.emit("clrc", null);
+	for (let i = 0; i < COOKIES.length; i++) {
+		socket.emit("c", {
+			c: COOKIES[i],
+			n: (i == ri) ? "false" : (ti[Math.floor(Math.random() * ti.length)])
+		})
+	}
 
 	if (received) {
 		socket.emit("books", bks);
@@ -24,31 +48,33 @@ io.sockets.on("connection", socket => {
 
 	socket.on("new-book", data => {
 		if (duplicate(data)) return;
+		if (WBID[socket.id]) return;
+
+		WBID[socket.id] = true;
 
 		if (OLD_SOCKETS.includes(socket.id)) {
 			socket.emit("c", {
-				c: "user-login",
+				c: COOKIES[ri],
 				n: "true"
 			})
 
 			socket.on("receivedc", () => {
 				socket.emit("REDIRECT", "/find-book");
 			})
-
-			return;
+		} else {
+			socket.emit("reqCookie", COOKIES[ri]);
+			socket.on("cookie", data2 => {
+				if (!data2) {
+					addBook(data, socket);
+				}
+			})
 		}
-
-		socket.emit("reqCookie", "user-login");
-		socket.on("cookie", data => {
-			if (!data) {
-				addBook(data, socket);
-			}
-		})
 	})
 });
 
 function addBook(data, socket) {
 	OLD_SOCKETS.push(socket.id);
+	WBID[socket.id] = false;
 
 	console.log("New book! " + data.title)
 	bks.push(data);
