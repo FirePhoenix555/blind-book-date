@@ -113,6 +113,9 @@ function searchByGenre(genre) {
 		}
 	}
 
+	// remove when adding genres back VV
+	document.getElementById("ALLb").textContent = all.ALL.length;
+
 	// description.substring(0, 20) + "...";
 	let arr = makeArr(options);
 	makeTable(document.getElementById("books"), arr);
