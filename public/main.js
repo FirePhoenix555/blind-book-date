@@ -255,7 +255,7 @@ function submit() {
 	obj.genre = genre;
 
 	obj.pages = document.getElementById("pages").value;
-	if (obj.pages == "" || obj.pages > 9999999999 || obj.pages <= 0) {
+	if (obj.pages == "" || obj.pages > 9999999999 || obj.pages <= 0 || !Number.isInteger(obj.pages)) {
 		alert("You need a page count!");
 		success = false;
 	}
