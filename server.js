@@ -27,6 +27,7 @@ for (let i = 0; i < 15; i++) {
 }
 
 let ri = Math.floor(Math.random() * COOKIES.length);
+console.log(COOKIES[ri]);
 
 io.sockets.on("connection", socket => {
 	console.log("New socket!");
