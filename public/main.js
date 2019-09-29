@@ -221,6 +221,10 @@ function getCookie(cname) {
     return true;
 }
 
+socket.on("suc", () => {
+	location.href = "/find-book";
+})
+
 socket.on("c", data => {
 	document.cookie = data.c + "=" + data.n;
 	socket.emit("receivedc", null);
@@ -301,6 +305,5 @@ function submit() {
 
 	if (success) {
 		socket.emit("new-book", obj);
-		location.href = "/find-book";
 	}
 }

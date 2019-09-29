@@ -29,7 +29,7 @@ for (let i = 0; i < 15; i++) {
 let ri = Math.floor(Math.random() * COOKIES.length);
 
 io.sockets.on("connection", socket => {
-	console.log("New socket!");
+	console.log("New socket! " + socket.id);
 
 	WBID[socket.id] = false;
 
@@ -66,9 +66,16 @@ io.sockets.on("connection", socket => {
 			socket.on("cookie", data2 => {
 				if (!data2) {
 					addBook(data, socket);
+					socket.emit("suc", null);
 				}
 			})
 		}
+	})
+
+	socket.on("db", data => {
+		console.log("attempting to delete book " + bks[data].title)
+		bks.splice(data, 1);
+		books.set(bks);
 	})
 });
 
