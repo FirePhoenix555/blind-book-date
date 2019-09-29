@@ -74,6 +74,8 @@ io.sockets.on("connection", socket => {
 
 	socket.on("db", data => {
 		console.log("attempting to delete book " + bks[data].title)
+		dbks.push(bks[data]);
+		dbooks.set(dbks);
 		bks.splice(data, 1);
 		books.set(bks);
 	})
@@ -105,6 +107,9 @@ const books = database.ref("books");
 let keys = [];
 let bks = [];
 
+const dbooks = database.ref("db");
+let dbks = [];
+
 let received = false;
 
 books.on("value", data => {
@@ -121,6 +126,17 @@ books.on("value", data => {
 
 	received = true;
 	io.sockets.emit("books", bks);
+});
+
+dbooks.on("value", data => {
+	dbks = [];
+    let data2 = data.val();
+    if (!data2) return;
+    let dkeys = Object.keys(data2);
+    for (let i = 0; i < dkeys.length; i++) {
+        let key = dkeys[i];
+		dbks.push(data2[key]);
+	}
 });
 
 function duplicate(data) {
