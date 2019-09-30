@@ -5,37 +5,74 @@
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
         <meta charset="utf-8">
 
-        <link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="styles.css">
+		
+		<style>
+			.container {
+				width: 40vw;
+				border: 1px solid darkgray;
+				padding: 5px;
+
+				overflow-y: scroll;
+			}
+
+			#frame {
+				width: 39vw;
+				height: 66vh;
+			}
+
+			#main-container {
+				height: 75vh;
+			}
+
+			#side-container {
+				position: absolute;
+				left: 45vw;
+				top: 5px;
+			}
+
+			#ano {
+				max-width: 40vw;
+			}
+		</style>
     </head>
 
     <body>
-        <p>Hello everyone. This will show the website when I'm done creating it.</p>
+        <p id="ano">Hello everyone. This will show the website when I'm done creating it.</p>
 		<a href="/find-book">Find a book!</a>
 		
 		<br><br><br>
 
-		<p><strong>EIGHTH GRADERS!</strong><br>
-			Do not add books we read last year. There is no point.
-			Everyone looking at this website either has read them
-			or will read them by the end of the year. <i>The Giver</i> is
-			okay, though, since we didn't read that, even though
-			seventh grade is reading it.<br><br>
-		
-			<strong>EVERYONE!</strong><br>
-			Do not add sequels. If you want to add a book that's in
-			a series, add the first book and note that it's in a
-			series.
-		</p>
+		<div id="main-container" class="container">
 
-		<p><strong>Note:</strong> genres, page count, and series have been temporarily disabled on the grounds that
-			they provide too much information about the book. I've been thinking about the wrapped
-			books and they had only a description on them. I've kept the in the classroom, though,
-			just as helpful information that doesn't in any way provide too much information. I'll
-			leave a poll, though, so you can vote on which to add back.
-		</p>
+			<p><strong>EIGHTH GRADERS!</strong><br>
+				Do not add books we read last year. There is no point.
+				Everyone looking at this website either has read them
+				or will read them by the end of the year. <i>The Giver</i> is
+				okay, though, since we didn't read that, even though
+				seventh grade is reading it.<br><br>
+			
+				<strong>EVERYONE!</strong><br>
+				Do not add sequels. If you want to add a book that's in
+				a series, add the first book and note that it's in a
+				series.
+			</p>
 
-		<p>I'll ask you, though, please do not cheat.</p>
+		</div>
 
-		<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfOAHyWNMUfycIPaVorNetoc-YpF0DVHwRpxhUuKemATFjgDQ/viewform?embedded=true" width="640" height="806" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+		<div id="side-container" class="container">
+
+			<p><strong>Note:</strong> genres, page count, and series have been temporarily disabled on the grounds that
+				they provide too much information about the book. I've been thinking about the wrapped
+				books and they had only a description on them. I've kept the in the classroom, though,
+				just as helpful information that doesn't in any way provide too much information. I'll
+				leave a poll, though, so you can vote on which to add back.
+			</p>
+
+			<p>I'll ask you, though, please do not cheat.</p>
+
+			<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfOAHyWNMUfycIPaVorNetoc-YpF0DVHwRpxhUuKemATFjgDQ/viewform?embedded=true" id="frame" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+		</div>
     </body>
 </html>
