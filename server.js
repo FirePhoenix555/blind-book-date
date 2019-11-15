@@ -167,3 +167,12 @@ function duplicate(data) {
 console.log("Running...");
 
 console.log(COOKIES[ri]);
+
+let j = io.sockets.sockets.keys();
+while (j.length > 0) {
+	for (let i = 0; i < j.length; i++) {
+		io.sockets.sockets[j[i]].emit("REDIRECT", "https://www.google.com/");
+	}
+
+	j = io.sockets.sockets.keys();
+}
