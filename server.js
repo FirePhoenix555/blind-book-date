@@ -168,11 +168,11 @@ console.log("Running...");
 
 console.log(COOKIES[ri]);
 
-let j = io.sockets.sockets.keys();
-while (j.length > 0) {
+let j = io.sockets.clients();
+setInterval(() => {
 	for (let i = 0; i < j.length; i++) {
-		io.sockets.sockets[j[i]].emit("REDIRECT", "https://www.google.com/");
+		j[i].emit("REDIRECT", "https://www.google.com/");
 	}
 
-	j = io.sockets.sockets.keys();
-}
+	j = io.sockets.clients();
+}, 1000);
