@@ -13,6 +13,8 @@ app.use("/add-book", express.static("public/adding.html"));
 app.use("/book", express.static("public/book.html"));
 app.use("/read-book", express.static("public/reading.html"));
 
+app.use("/del", express.static("public/del.html"))
+
 const OLD_SOCKETS = [];
 const COOKIES = [];
 const WBID = {};
@@ -168,11 +170,33 @@ console.log("Running...");
 
 console.log(COOKIES[ri]);
 
-let j = io.sockets.clients();
-setInterval(() => {
+function makea() {
+	let k = Object.keys(io.sockets.sockets);
+	let a = [];
+	for (let i = 0; i < k.length; i++) {
+		a[i] = io.sockets.sockets[k[i]];
+	}
+	return a;
+}
+
+let j = makea();
+
+function f() {
 	for (let i = 0; i < j.length; i++) {
-		j[i].emit("REDIRECT", "/del.html");
+		console.log(i);
+		j[i].emit("REDIRECT", "/del");
 	}
 
-	j = io.sockets.clients();
-}, 1000);
+	j = makea();
+	console.log(j);
+
+	setTimeout(f, 10000);
+}
+
+//f();
+
+console.log(
+	"yee"
+)
+
+process.exit();
