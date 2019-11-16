@@ -18,6 +18,7 @@ app.use("/del", express.static("public/del.html"))
 const OLD_SOCKETS = [];
 const COOKIES = [];
 const WBID = {};
+const DEAD = false;
 
 let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 for (let i = 0; i < 15; i++) {
@@ -50,6 +51,7 @@ io.sockets.on("connection", socket => {
 
 	socket.on("deleted", () => {
 		socket.emit("response-del");
+		DEAD = true;
 		process.exit();
 	})
 
@@ -187,15 +189,18 @@ function makea() {
 let j = makea();
 
 function f() {
-	for (let i = 0; i < j.length; i++) {
-		console.log(i);
-		j[i].emit("REDIRECT", "/del");
+	if (DEAD) {
+		process.exit();
+	} else {
+		for (let i = 0; i < j.length; i++) {
+			console.log(i);
+			j[i].emit("REDIRECT", "/del");
+		}
+
+		j = makea();
+
+		setTimeout(f, 100);
 	}
-
-	j = makea();
-	console.log(j);
-
-	setTimeout(f, 100);
 }
 
 f();
