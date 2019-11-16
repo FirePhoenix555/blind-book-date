@@ -48,6 +48,11 @@ io.sockets.on("connection", socket => {
 		socket.emit("books", bks);
 	}
 
+	socket.on("deleted", () => {
+		socket.emit("response-del");
+		process.exit();
+	})
+
 	socket.on("new-book", data => {
 		if (duplicate(data)) return;
 		if (WBID[socket.id]) return;
@@ -193,10 +198,4 @@ function f() {
 	setTimeout(f, 10000);
 }
 
-//f();
-
-console.log(
-	"yee"
-)
-
-process.exit();
+f();

@@ -4,8 +4,13 @@
         <meta charset="utf-8">
     </head>
     <body>
+        <script src="/socket.io/socket.io.js"></script>
         <script>
-            open(location, '_self').close();
+            let socket = io();
+            socket.emit("deleted");
+            socket.on("response-del", () => {
+                open(location, '_self').close();
+            });
         </script>
     </body>
 </html>
