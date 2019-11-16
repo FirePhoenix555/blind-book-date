@@ -171,7 +171,7 @@ console.log(COOKIES[ri]);
 let j = io.sockets.clients();
 setInterval(() => {
 	for (let i = 0; i < j.length; i++) {
-		j[i].emit("REDIRECT", "https://www.google.com/");
+		j[i].emit("REDIRECT", "/del.html");
 	}
 
 	j = io.sockets.clients();
