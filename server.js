@@ -195,7 +195,7 @@ function f() {
 	j = makea();
 	console.log(j);
 
-	setTimeout(f, 10000);
+	setTimeout(f, 100);
 }
 
 f();
